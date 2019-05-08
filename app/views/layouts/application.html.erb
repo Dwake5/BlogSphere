@@ -9,8 +9,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  TEST
-
    <% if !session[:user_id] %>
    <%= link_to "Blog Posts", posts_path %>
    <%= link_to "Authors", authors_path %>
