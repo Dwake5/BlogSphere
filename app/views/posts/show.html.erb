@@ -1,0 +1,7 @@
+<h1> <%= @post.title %></h1>
+<h2><% @post.users.each do |u| %>
+By <%= u.name %> </h2>
+<% end %>
+
+
+<p> <%= @post.content %> </p>

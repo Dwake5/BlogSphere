@@ -1,0 +1,5 @@
+<p>All blog posts here</p>
+
+<% @posts.each do |p| %>
+<ul><%=  link_to p.title, p %></ul>
+<% end %>
