@@ -9,6 +9,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+   <% if !session[:user_id] %>
+   <%= link_to "Blog Posts", posts_path %>
+   <%= link_to "Authors", authors_path %>
+   <%= form_tag("/login", method: :post) do %>
+    <div>
+      <%= label_tag :email %>
+      <%= text_field_tag :email%>
+    </div>
+    <div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+      <%= submit_tag "Login" %>
+  <%end%>
+  <%= link_to "Sign-up", signup_path%>
+  <% else %>
+   <%= link_to "Blog Posts", posts_path %>
+   <%= link_to "Authors", authors_path %>
+   <%= link_to "Create new post", new_post_path %>
+   <%= link_to "My Profile", user_path(session[:user_id]) %>
+   <%= form_tag("/logout", method: :get) do %>
+      <%= submit_tag "Logout" %>
+   <%end%>
+  <% end %>
+
   <body>
     <%= yield %>
   </body>
