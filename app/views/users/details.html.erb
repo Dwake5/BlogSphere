@@ -1,0 +1,20 @@
+<h1>Hello, <%= @user.name %></h1>
+
+<p>Name: <%= @user.name %></p>
+
+<p>Email adress: <%= @user.email %></p>
+
+<% if @user.bio %>
+<p>Bio: <%= @user.bio %></p>
+<% else %>
+<p> Add a bio </p>
+<% end %>
+
+<% if @user.img_url %>
+<img src= "<%= @user.img_url %>" height = 150, width = 100>
+<% else %>
+<p> Add a profile picture </p>
+<% end %>
+
+<br>
+<%= link_to 'Published Posts', posts_path %>
