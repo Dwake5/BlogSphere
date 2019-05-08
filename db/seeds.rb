@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Post.destroy_all
+UserPost.destroy_all
+
+50.times do
+    User.create(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password_digest: Faker::Internet.password(10, 20), bio: Faker::Lorem.sentence)
+end
+
+150.times do
+    Post.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph_by_chars(10000, false))
+end
+
+Post.all.each do |p|
+    UserPost.create(user_id: User.all.sample.id, post_id: p.id)
+end
