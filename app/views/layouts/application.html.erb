@@ -60,7 +60,7 @@
         <a class="nav-link" href=<%= new_post_path %>>Write New Post <span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href=<%= user_path(current_user.id) %>>My Account <span class="sr-only"></span></a>
+        <a class="nav-link" href=<%= authors_path(current_user.id) %>>My Account <span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href=<%= logout_path %>>Logout <span class="sr-only"></span></a>
@@ -68,7 +68,6 @@
       <% end %>
       </div>
 </nav>
-
 
   <body>
     <%= yield %>
