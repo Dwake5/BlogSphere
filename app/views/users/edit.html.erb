@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+
+  <%= f.label :img_url %>
+  <%= f.text_field :img_url %>
+
+  <%= f.submit "Update account" %>
+<% end %>

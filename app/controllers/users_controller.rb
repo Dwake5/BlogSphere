@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :details]
+    before_action :set_user, only: [:show, :details, :edit, :update]
 
     def index
         @users = User.all
@@ -29,7 +29,17 @@ class UsersController < ApplicationController
         flash[:warning] = "Incorrect email or password"
         redirect_to '/signup'
       end
+    end
 
+    def update
+      @user.update(user_params)
+      @user.save
+
+      redirect_to user_path
+    end
+
+    def destroy
+      @user.destroy
     end
 
     private

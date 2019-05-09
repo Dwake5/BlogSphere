@@ -4,17 +4,19 @@
 
 <p>Email adress: <%= @user.email %></p>
 
-<% if @user.bio %>
+<% if @user.bio && @user.bio.length > 0 %>
 <p>Bio: <%= @user.bio %></p>
 <% else %>
-<p> Add a bio </p>
+<p> <%= link_to "Add a bio", edit_user_path(@user) %></p>
 <% end %>
 
-<% if @user.img_url %>
+<% if @user.img_url && @user.img_url.length > 0 %>
 <img src= "<%= @user.img_url %>" height = 150, width = 100>
 <% else %>
-<p> Add a profile picture </p>
+<p><%= link_to "Add a profile picture", edit_user_path(@user) %></p>
 <% end %>
 
 <br>
+
+
 <%= link_to 'Published Posts', posts_path %>

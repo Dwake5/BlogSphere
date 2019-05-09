@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :sessions
 
   get '/', to: 'posts#index'
-  get 'users/:id/details' , to: 'users#details'
   get 'authors', to: 'users#index'
   get 'authors/:id', to: 'users#show'
   get 'authors/:id/details', to: 'users#details'
