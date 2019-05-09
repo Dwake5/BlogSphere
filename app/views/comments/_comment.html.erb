@@ -4,7 +4,7 @@
 <h2> <%= pluralize(@comments.count, "Comment") %></h2>
 <% @comments.reverse.each do |comment| %>
 
-  <p><u><%= comment.user.name %></u> Published <%= long_ago(Time.now - comment.created_at)  %> ago</p>
+  <p><u><%= link_to comment.user.name, comment.user %></u> Published <%= long_ago(Time.now - comment.created_at)  %> ago</p>
   <p><%= comment.content %></p>
 
   <% if current_user == comment.user %>
