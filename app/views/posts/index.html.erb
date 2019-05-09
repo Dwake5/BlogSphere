@@ -1,24 +1,32 @@
 <div class="card" style="margin-top: 50px; margin-left: 50px; margin-right: 50px">
   <div class="card-header">
-    Latest Post
+    <h4>Latest Post</h4>
   </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= @posts.reverse[0].title%></h5>
-    <p class="card-text"><%= @posts.reverse[0].content.truncate(100, separator: ' ')%>.</p>
-    <a href=<%= post_path(@posts.reverse[0]) %> class="btn btn-primary">Read</a>
+    <% @post = @posts.reverse[0]%>
+    <div class="card-body">
+    <div class="row">
+    <img class="col-sm-2" height="150" src=<%= @post.img_url %>>
+    <div class="col-sm-2">
+      <h5 class="card-title"><%= @post.title%></h5>
+      <p class="card-text"><%= @post.content.truncate(100, separator: ' ')%>.</p>
+      <a href=<%= post_path(@post) %> class="btn btn-primary">Read</a>
+    </div>
   </div>
+</div>
 </div>
 
-<div class="row" style="margin-top: 50px">
-    <div class="card-columns">
-    <% @posts.reverse[1..-1].each do |p| %>
-    <div class="card" style="width: 22rem; margin-left: 65px">
-        <img src=<%= p.img_url %> class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title"><%= link_to p.title, p %></h5>
-        <p class="card-text"><%= p.content.truncate(100, separator: ' ') %></p>
-        </div>
+<div class="card" style="margin-top: 50px; margin-left: 50px; margin-right: 50px">
+<div class="card-header">
+    <h4>All Posts</h4>
+  </div>
+<?div>
+<div class="card-columns" style="margin-top: 50px">
+<% @posts.sort.each do |p| %>
+  <div class="card" style="width: 22rem; margin-left: 38px">
+    <img height="200" width="150" src=<%= p.img_url %> class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to p.title, p %></h5>
+      <p class="card-text"><%= p.content.truncate(100, separator: ' ') %></p>
     </div>
-    <% end %>
-    </div>
-</div>
+  </div>
+  <% end %>

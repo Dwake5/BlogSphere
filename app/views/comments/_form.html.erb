@@ -1,7 +1,7 @@
 <div align="left">
 <%= form_for ([@post, @post.comments.build]), :html => {:class => "form-horizontal center"} do |f| %>
-        <div class="col-md-2">
-          <%= f.text_field :content, class: "form-control" %> <br>
+        <div class="col-md-35">
+          <%= f.text_area :content, class: "form-control", placeholder: "Write your comment here"%> <br>
           <%= f.submit "Comment", class: "btn btn-default btn-primary" %>  
         </div>    
  <% end %>
