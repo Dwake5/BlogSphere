@@ -9,6 +9,7 @@
 User.destroy_all
 Post.destroy_all
 UserPost.destroy_all
+Comment.destroy_all
 
 50.times do
     User.create(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password_digest: Faker::Internet.password(10, 20), bio: Faker::Lorem.sentence)
@@ -20,4 +21,8 @@ end
 
 Post.all.each do |p|
     UserPost.create(user_id: User.all.sample.id, post_id: p.id)
+end
+
+100.times do
+    Comment.create(content: Faker::Lorem.paragraph_by_chars(100, false), user_id: User.all.sample.id, post_id: Post.all.sample.id)
 end

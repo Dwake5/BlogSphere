@@ -22,7 +22,7 @@
       <%= password_field_tag :password %>
     </div>
       <%= submit_tag "Login" %>
-  <%end%>
+  <% end %>
   <%= link_to "Sign-up", signup_path%>
   <% else %>
    <%= link_to "Blog Posts", posts_path %>
@@ -31,7 +31,7 @@
    <%= link_to "My Profile", user_path(session[:user_id]) %>
    <%= form_tag("/logout", method: :get) do %>
       <%= submit_tag "Logout" %>
-   <%end%>
+   <% end %>
   <% end %>
 
   <body>
