@@ -1,10 +1,4 @@
-<h1>Authors</h1>
-<!--
-<% @users.each do |u| %>
-<h3> <%= link_to u.name, u %> </h3>
-<% end %>
--->
-<div class="card-columns">
+<div class="card-columns" style="margin-top: 50px">
 <% @users.each do |u| %>
   <div class="card" style="width: 25rem; margin-left: 30px; margin-right: -50px">
     <img src=<%= u.img_url %> class="card-img-top" alt="...">
