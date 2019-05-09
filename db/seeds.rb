@@ -12,11 +12,11 @@ UserPost.destroy_all
 Comment.destroy_all
 
 50.times do
-    User.create(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password_digest: Faker::Internet.password(10, 20), bio: Faker::Lorem.sentence)
+    User.create(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password_digest: Faker::Internet.password(10, 20), bio: Faker::Lorem.sentence, img_url: Faker::Avatar.image)
 end
 
 150.times do
-    Post.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph_by_chars(10000, false))
+    Post.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph_by_chars(10000, false), img_url: Faker::LoremFlickr.image)
 end
 
 Post.all.each do |p|

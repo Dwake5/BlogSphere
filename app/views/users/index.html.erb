@@ -1,5 +1,17 @@
-<h1>Authors Index</h1>
-
+<h1>Authors</h1>
+<!--
 <% @users.each do |u| %>
 <h3> <%= link_to u.name, u %> </h3>
 <% end %>
+-->
+<div class="card-columns">
+<% @users.each do |u| %>
+  <div class="card">
+    <img src=<%= u.img_url %> class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to u.name, u %></h5>
+      <p class="card-text"><%= u.bio %></p>
+    </div>
+  </div>
+  <% end %>
+</div>
