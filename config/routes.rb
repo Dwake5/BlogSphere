@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   get 'sessions/new'
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :users
   resources :sessions
-  
+
   get '/', to: 'posts#index'
   get 'users/:id/details' , to: 'users#details'
   get 'authors', to: 'users#index'
@@ -14,5 +16,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
- 
+
 end

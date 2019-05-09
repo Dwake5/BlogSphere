@@ -1,12 +1,15 @@
 class ApplicationController < ActionController::Base
+    helper_method :current_user, :user_signed_in?, :authenticate_user
 
     def current_user
-        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] 
-    end 
-    helper_method :current_user 
-    
-    def authenticate_user! 
-        redirect_to login_path unless current_user
-    end 
+        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
 
+    def authenticate_user!
+        redirect_to login_path unless current_user
+    end
+
+    def user_signed_in?
+      !!session[:user_id]
+    end
 end
