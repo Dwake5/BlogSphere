@@ -18,7 +18,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@post)
     else
-      redirect_to post_path
+      flash[:warning] = "Your comment has not saved"
+      redirect_to post_path(@post)
     end
   end
 
@@ -45,13 +46,15 @@ class CommentsController < ApplicationController
   end
 
   def find_comment
-    @comment = @post.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def comment_owner
     unless current_user.id == @comment.user_id
-      flash[:notice] = "You do not have access to this"
+      flash[:warning] = "You do not have access to this"
       redirect_to @post
     end
   end
+
+
 end

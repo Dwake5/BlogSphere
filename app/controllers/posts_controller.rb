@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit]
+    helper_method :long_ago
+
 
     def index
         @posts = Post.all
     end
 
     def show
-      # byebug
       @comments = Comment.where(post_id: @post)
     end
 
@@ -45,6 +46,18 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:title, :content)
+    end
+
+    def long_ago(seconds)
+      if seconds > 86400
+        "#{((seconds/86400).round)} days"
+      elsif seconds > 3600
+        "#{((seconds/3600).round)} hours"
+      elsif seconds > 60
+        "#{((seconds/60).round)} minutes"
+      else
+        "#{seconds} seconds"
+      end
     end
 
 
