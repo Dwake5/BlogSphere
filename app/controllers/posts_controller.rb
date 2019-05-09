@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 
     def index
-        @posts = Post.all
+      @posts = Post.all
     end
 
     def show
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       elsif seconds > 60
         "#{((seconds/60).round)} minutes"
       else
-        "#{seconds} seconds"
+        "#{seconds.round} seconds"
       end
     end
 
