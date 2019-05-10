@@ -1,23 +1,27 @@
-<h1>Hello, <%= @user.name %></h1>
-
-<p>Name: <%= @user.name %></p>
-
-<p>Email adress: <%= @user.email %></p>
-
-<% if @user.bio && @user.bio.length > 0 %>
-<p>Bio: <%= @user.bio %></p>
-<% else %>
-<p> <%= link_to "Add a bio", edit_user_path(@user) %></p>
-<% end %>
-
-<% if @user.img_url && @user.img_url.length > 0 %>
-<img src= "<%= @user.img_url %>" height = 150, width = 100>
-<% end %>
-<% if @user.img_url == 'https://www.idyllwildarts.org/wp-content/uploads/2016/09/blank-profile-picture.jpg' || nil %>
-<p><%= link_to "Add a profile picture", edit_user_path(@user) %></p>
-<% end %>
-
-<br>
-
-
-<%= link_to 'Published Posts', posts_path %>
+<div class="container" style="margin-left: 35px; margin-top: 50px">
+  <div class="row">
+    <div class="col">
+      <img height="200" width="150" src=<%= @user.img_url %>> <br> <br>  
+      <h1>Name: <%= @user.name %></h1>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col">
+        <div style="margin-left:15px"><a href=<%= edit_user_path(@user)%> class="btn btn-primary" role="button" aria-pressed="true">Edit Profile</a></div>
+    </div> <br>
+  </div> <br>
+  <div class="row">
+    <div class="col">
+        <h1>Email: <h5><%= @user.email %></h5></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <h1>Bio:</h1>
+        <% if @user.bio && @user.bio.length > 0 %>
+            <p><%= @user.bio %></p>
+        <% else %>
+            <p> <%= link_to "Add a bio", edit_user_path(@user) %></p>
+        <% end %>
+    </div>
+  </div>
