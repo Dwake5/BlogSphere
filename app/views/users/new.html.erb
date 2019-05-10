@@ -1,46 +1,59 @@
-
 <div align="center" style="margin-top: 100px">
-<h5 style="margin-bottom: 50px">Thank you for your interest in the Off the Rails Blog.
-Please fill in the form below to create your account.</h5>
 <%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
       <div class="form-group">
-        <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
-        <div class="col-md-8">
-          <%= f.text_field :name, class: "form-control" %>
+      <div class="row">
+            <div class="col">
+                <h5>Thank you for your interest in the Off the Rails Blog. Please fill in the form below to create your account.</h5>
+            </div> <br> <br> <br>
         </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :email, "Email:", class: "col-md-4 control-label" %>
-        <div class="col-md-8">
-          <%= f.text_field :email, class: "form-control" %>
+      <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_field :name, class: "form-control", placeholder: "Write your full name here"%>
+            </div>
+      </div> <br>
+      <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :email, "Email:", class: "col-md-4 control-label"%>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_field :email, class: "form-control", rows: "8", placeholder: "Write your email"%>
+            </div>
+      </div> <br> 
+      <div class="row">
+      <div class="col-sm-1">
+            <%= f.label "Profile Photo:", class: "col-md-4 control-label" %>
         </div>
-      </div>
-      <div class="form-group">
-        <%= f.label "Profile Photo:", class: "col-md-4 control-label" %>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <%= f.file_field :avatar, class: "form-control" %>
         </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :bio, "Bio:", class: "col-md-4 control-label" %>
-        <div class="col-md-8">
-          <%= f.text_area :bio, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password, "Password:", class: "col-md-4 control-label" %>
-        <div class="col-md-8">
-          <%= f.password_field :password, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation, "Confirm Password:", class: "col-md-4 control-label" %>
-        <div class="col-md-8">
-          <%= f.password_field :password_confirmation, class: "form-control" %>
-        </div>
-      </div>
+    </div> <br>
+      <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :bio, "Bio:", class: "col-md-4 control-label"%>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_area :bio, class: "form-control", rows: "8", placeholder: "Write your bio"%>
+            </div>
+      </div> <br>
+      <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :password, "Password:", class: "col-md-4 control-label"%>
+            </div>
+            <div class="col-md-10">
+                <%= f.password_field :password, class: "form-control", rows: "5", placeholder: "Type in your password"%>
+            </div>
+      </div> <br>
+      <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :password_confirmation, "Confirm Password:", class: "col-md-4 control-label"%>
+            </div>
+            <div class="col-md-10">
+                <%= f.password_field :password_confirmation, class: "form-control", rows: "8", placeholder: "Please confirm your password"%>
+            </div>
+      </div> <br>
       <%= f.submit "Sign Up", class: "btn btn-default btn-primary" %>  
  <% end %>
  </div>
