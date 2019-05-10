@@ -1,4 +1,23 @@
-<%= form_for ([@post, @comment]) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
-<% end %>
+<div align="center" style="margin-top: 100px">
+<%= form_for ([@post, @comment]), :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <h5>Please edit your comment</h5>
+            </div> <br> <br> <br>
+        </div>
+        <div class="row">
+            <div class="col-sm-1" style = "margin-right:30px">
+                <%= f.label :content, "Comment:", class: "col-md-4 control-label" %>
+            </div>
+            <div class="col-md-4">
+                <%= f.text_area :content, class: "form-control", placeholder: "Write the title of your new post here" %>
+            </div>
+        </div> <br>
+        <div class="row">
+            <div class="col-sm-4">
+              <%= f.submit "Update comment", class: "btn btn-default btn-primary" %>  
+               </div>
+        </div> <br>
+ <% end %>
+ </div>
