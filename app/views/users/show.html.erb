@@ -1,14 +1,32 @@
-<h1>Author's Page</h1>
+<div class="container" style="margin-left: 35px; margin-top: 50px">
+  <div class="row">
+    <div class="col">
+      <img height="200" width="150" src=<%= @user.img_url %>>    
+      <h1> <%= @user.name %></h1>
+    </div>
+  </div>
+  </div>
+  <% if @user.posts.length < 1%>
+  <h3>This user has not published any post yet!</h3>
+  <% else %>
 
-<% if @user.img_url %>
-<img src="<%= @user.img_url %>" height="200" width="200" alt="">
-<% else %>
-<img src="<%= (url_for(@user.avatar)) %>" height="200" width="200" alt="">
-<% end %>
-<h3>Name of Author: <%= @user.name %> </h3>
-
-<h3>Author's Posts:</h3>
-
-<% @user.posts.each do |p| %>
-<ul> <%= link_to p.title, p %>, published on <%= p.created_at %> </ul>
-<% end %>
+  <% end %>
+  <div class="row">
+    <div class="col">
+        <div class="card" style="margin-top: 50px; margin-left: 50px; margin-right: 50px">
+            <div class="card-header">
+                <h4>Author's Posts</h4>
+            </div>
+        </div>
+<div class="card-columns" style="margin-top: 50px; margin-left: 50px; margin-right: 50px"">
+<% @user.posts.reverse.each do |p| %>
+  <div class="card" style="width: 22rem; margin-left: 38px">
+    <img height="200" width="150" src=<%= p.img_url %> class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to p.title, p %></h5>
+      <p class="card-text"><%= p.content.truncate(100, separator: ' ') %></p>
+    </div>
+  </div>
+  <% end %>
+  </div>
+  </div>
