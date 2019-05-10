@@ -15,6 +15,14 @@
             </div>
         </div> <br>
         <div class="row">
+            <div class="col-sm-2" style="margin-left:35px">
+                <p>Choose Author collaborator</p>
+            </div>
+            <div class="col-md-2">
+                <%= f.collection_select :users, User.all, :id, :name %>
+            </div>
+        </div> <br>
+        <div class="row">
             <div class="col-sm-1">
                 <%= f.label :content, "Content:", class: "col-md-4 control-label"%>
             </div>
