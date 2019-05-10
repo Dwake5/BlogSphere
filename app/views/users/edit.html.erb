@@ -1,0 +1,35 @@
+<div align="center" style="margin-top: 100px">
+<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <h5>Please edit your account in the form below</h5>
+            </div> <br> <br> <br>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_area :name, class: "form-control", placeholder: "Change your bio here"%>
+            </div>
+        </div> <br>
+        <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :bio, "Bio:", class: "col-md-4 control-label" %>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_area :bio, class: "form-control", placeholder: "Write your bio here"%>
+            </div>
+        </div> <br>
+        <div class="row">
+        <div class="col-sm-1">
+            <%= f.label "Profile Photo:", class: "col-md-4 control-label" %>
+        </div>
+        <div class="col-md-10">
+          <%= f.file_field :avatar, class: "form-control" %>
+        </div>
+    </div> <br>
+      <%= f.submit "Update Account", class: "btn btn-default btn-primary" %>  
+ <% end %>
+ </div>

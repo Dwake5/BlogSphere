@@ -1,0 +1,44 @@
+
+<!-- saved from url=(0264)https://2144427028-jotspot-embeds.googleusercontent.com/code/8d87fa64604b2a11fae2ed06104c58d3/inner_iframe.html?jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.2XmWHPjutwk.O%2Fam%3DwQE%2Fd%3D1%2Frs%3DAGLTcCPxw6eZuU7CTCjWpPYcw7FDPkpLOg%2Fm%3D__features__ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base target="_blank">--><base href="." target="_blank"><script language="javascript">
+window.onload = setup;
+
+function setup(){
+ document.getElementById('button').addEventListener('click', go, false);
+}
+  
+function go(){
+    var DocIDfull = document.getElementById('DocID').value;
+    var DocIDstart = DocIDfull.indexOf('/d/');
+    var DocIDend = DocIDfull.indexOf('/', DocIDstart+3);
+    if (DocIDstart == -1){
+      document.getElementById('Input_span').innerHTML = '<input type="text" id="output" style="background-color:darkred;color:white;width:500px;" value="Error: Invalid URL" readonly>';
+      return
+    }
+    if (DocIDend == -1){
+      var DocID = DocIDfull.slice(DocIDstart+3)
+    }
+    else{
+      var DocID = DocIDfull.slice(DocIDstart+3, DocIDend)
+    }
+    var ID = 'https://drive.google.com/uc?export=download&id=' + DocID;
+    document.getElementById('Input_span').innerHTML = '<input type="text" onclick="this.select();" id="output" style="width:500px;" value="' + ID + '" readonly>' +
+                                  '<hr style="visibility:hidden;height:0">' +
+                                                      '<font style="font-size: 12px;font-weight: bold;color: #086900;">Tip: Click the output text, then press Ctrl+A,' +
+                                                      '<br>followed by Ctrl+C to copy it to your clipboard' +
+                                  '<br>(Cmd+A and Cmd+C on a mac)</font>';
+    document.getElementByID('output').select();
+}
+</script>
+</head><body><div align="left">
+<font face="Century Gothic, Calibri" size="5">Enter your sharing URL:</font>
+<br>
+<input id="DocID" style="width:500px;" type="text">
+<br>
+<button id="button">Create Direct Link</button>
+<br><br>
+<font face="Century Gothic, Calibri" size="5">Output link:</font>
+<br>
+<span id="Input_span"><input type="text" onclick="this.select();" id="output" style="width:500px;" value="https://drive.google.com/uc?export=download&amp;id=1Wmrx7IA8OKs7ceIODiJ4AHW-fOnYJP1c" readonly=""><hr style="visibility:hidden;height:0"><font style="font-size: 12px;font-weight: bold;color: #086900;">Tip: Click the output text, then press Ctrl+A,<br>followed by Ctrl+C to copy it to your clipboard<br>(Cmd+A and Cmd+C on a mac)</font></span>
+<br><br>
+</div></body></html>
