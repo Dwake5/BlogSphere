@@ -1,22 +1,19 @@
+<% if user_signed_in? %>
+  <%= render 'comments/form' %> <br>
+  <% end%>
 <h2> <%= pluralize(@comments.count, "Comment") %></h2>
+<% @comments.reverse.each do |comment| %>
 
-<% @comments.each do |comment| %>
-
-  <p><u><%= comment.user.name %></u> Published <%= long_ago(Time.now - comment.created_at)  %> ago</p>
+  <u><%= link_to comment.user.name, comment.user %></u>
+  <p class="text-muted"> Published <%= long_ago(Time.now - comment.created_at)  %> ago</p>
   <p><%= comment.content %></p>
 
   <% if current_user == comment.user %>
     <div class="center">
-    <%= button_to 'Delete', [comment.post, comment], method: :delete %>
-    <%= button_to 'Edit', edit_post_comment_path(comment.post, comment), method: :get
-     %>
+    <a href=<%= edit_post_comment_path(comment.post, comment)%> class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Edit Post</a>
+    <a href=<%= edit_post_comment_path(comment.post, comment)%> class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Delete Post</a>
     <br>
     </div>
   <% end %>
   <br>
 <% end %>
-
-
-<% if user_signed_in? %>
-  <%= render 'comments/form' %>
-<% end%>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit]
+    before_action :set_post, only: [:show, :edit, :destroy]
     helper_method :long_ago
 
 
@@ -36,6 +36,10 @@ class PostsController < ApplicationController
     end
 
     def update
+    end
+
+    def destroy
+      @post.destroy
     end
 
     private

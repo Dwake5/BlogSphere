@@ -1,15 +1,46 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+<div align="center" style="margin-top: 100px">
+<h5 style="margin-bottom: 50px">Thank you for your interest in the Off the Rails Blog.
+Please fill in the form below to create your account.</h5>
+<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "Email:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label "Profile Photo:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.file_field :avatar, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :bio, "Bio:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_area :bio, class: "form-control" %>
+        </div>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <div class="form-group">
+        <%= f.label :password, "Password:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Sign up" %>
-<% end %>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirm Password:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+      <%= f.submit "Sign Up", class: "btn btn-default btn-primary" %>  
+ <% end %>
+ </div>

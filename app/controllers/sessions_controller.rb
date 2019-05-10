@@ -1,9 +1,7 @@
 class SessionsController < ApplicationController
 
     def new
-      if session[:user_id]
-        redirect_to(posts_path)
-      end
+      redirect_to(posts_path)
     end
   
     def create
@@ -11,17 +9,17 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:password])
        session[:user_id] = user.id
        flash[:success] = "Successfully Logged In!"
-       redirect_to user_path(user.id)
+       redirect_back(fallback_location: posts_path)
       else
        flash[:warning] = "Incorrect username or password"
-       redirect_to(login_path)
+       redirect_back(fallback_location: posts_path)
       end
     end
   
     def destroy
        session[:user_id] = nil
        flash[:success] = "You have successfully logged out."
-       redirect_to(posts_path)
+       redirect_back(fallback_location: posts_path)
     end
   
 end

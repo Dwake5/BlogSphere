@@ -1,9 +1,36 @@
-<h1>New Post Form</h1>
-
-<%= form_for @post do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :content %>
-<%= f.text_area :content %>
-<%= f.submit %>
-<% end %>
+<div align="center" style="margin-top: 100px">
+<%= form_for @post, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <h5>Please create your new post in the form below</h5>
+            </div> <br> <br> <br>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :title, "Title:", class: "col-md-4 control-label" %>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_field :title, class: "form-control", placeholder: "Write the title of your new post here"%>
+            </div>
+        </div> <br>
+        <div class="row">
+            <div class="col-sm-2" style="margin-left:35px">
+                <p>Choose Author collaborator</p>
+            </div>
+            <div class="col-md-2">
+                <%= f.collection_select :users, User.all, :id, :name %>
+            </div>
+        </div> <br>
+        <div class="row">
+            <div class="col-sm-1">
+                <%= f.label :content, "Content:", class: "col-md-4 control-label"%>
+            </div>
+            <div class="col-md-10">
+                <%= f.text_area :content, class: "form-control", rows: "8", placeholder: "Write your new post here"%>
+            </div>
+        </div>
+      </div>
+      <%= f.submit "Post", class: "btn btn-default btn-primary" %>  
+ <% end %>
+ </div>

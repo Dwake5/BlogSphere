@@ -26,20 +26,21 @@
       </li>
       -->
 
+<!-- Image and text -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="#">Off the Rails Blog</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <a class="navbar-brand" href="#">
+    <img src="app/assets/images/Pokt3Hfh_400x400.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Off the Rails Blog
+  </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     <% if !session[:user_id] %>
-      <li class="nav-item active">
-        <a class="nav-link" href=<%= posts_path %>>All Blog Posts <span class="sr-only"></span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href=<%= posts_path %>>All Blog Posts <span class="sr-only"></span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href=<%= authors_path %>>All Authors <span class="sr-only"></span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href=<%= authors_path %>>All Authors <span class="sr-only"></span></a>
       </li>
     </ul>
     <nav class="navbar navbar-light bg-light">
@@ -48,39 +49,28 @@
           <input class="form-control mr-sm-2" placeholder="Password"<%= password_field_tag :password%>
         <%= submit_tag "Login", class: "btn btn-outline-success my-2 my-sm-0" %>
       <%end%>
-    </nav>
-
-<!--
-<%= form_tag("/login", method: :post) do %>
- <div>
-  <%= label_tag :email %>
-  <%= text_field_tag :email%>
- </div>
- <div>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
- </div>
-  <%= submit_tag "Submit" %>
-<%end%>
--->
+      </nav>
+      <nav class="navbar navbar-light bg-light">
+      <a href=<%= signup_path%> class="btn btn-primary" role="button" aria-pressed="true">Sign Up</a>
+      </nav>
   <% else %>
     <li class="nav-item active">
-        <a class="nav-link" href=<%= posts_path %>>All Blog Posts <span class="sr-only"></span></a>
+        <a class="nav-link" href=<%= posts_path %>>All Blog Posts <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href=<%= authors_path %>>All Authors <span class="sr-only"></span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href=<%= authors_path %>>All Authors <span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href=<%= new_post_path %>>Write New Post <span class="sr-only"></span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href=<%= user_path(current_user.id) %>>My Account <span class="sr-only"></span></a>
+        <a class="nav-link" href=<%= "/users/#{current_user.id}/details" %>>My Account <span class="sr-only"></span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href=<%= logout_path %>>Logout <span class="sr-only"></span></a>
+      <li class="nav-right">
+        <a class="nav-link"><%="Welcome, #{current_user.name}"%></a>
       </li>
+      <a href=<%= logout_path%> class="btn btn-primary" role="button" aria-pressed="true">Log Out</a>
       <% end %>
-      </div>
 </nav>
 
   <body>

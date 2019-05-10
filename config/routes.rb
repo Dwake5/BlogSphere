@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get '/', to: 'posts#index'
   get 'authors', to: 'users#index'
   get 'authors/:id', to: 'users#show'
-  get 'authors/:id/details', to: 'users#details'
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
   get '/login', to: 'sessions#new'

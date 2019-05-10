@@ -23,6 +23,6 @@ Post.all.each do |p|
     UserPost.create(user_id: User.all.sample.id, post_id: p.id)
 end
 
-100.times do
+1500.times do
     Comment.create(content: Faker::Lorem.paragraph_by_chars(100, false), user_id: User.all.sample.id, post_id: Post.all.sample.id)
 end
