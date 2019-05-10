@@ -35,11 +35,15 @@ class CommentsController < ApplicationController
   end
 
   def find_post
-    @post = Post.find(params[:post_id])
+    if params[:id]
+      @post = Post.find(params[:id])
+    else
+      @post = Post.find(params[:post_id])
+    end
   end
 
   def find_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:post_id])
   end
 
   def comment_owner
@@ -50,8 +54,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
+    # @post = Post.find(params[:post_id])
+    # @comment = @post.comments.find(params[:id])
     @comment.destroy
 
     redirect_to post_path(@post)
